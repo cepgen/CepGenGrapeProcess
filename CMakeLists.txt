@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 project(CepGenGrapeProcess)
 enable_language(Fortran)
 
-set(CEPGEN_DIRS $ENV{CEPGEN_DIR} /usr /usr/local)
+set(CEPGEN_DIRS $ENV{CEPGEN_PATH} /usr /usr/local)
 find_library(CEPGEN CepGen HINTS ${CEPGEN_DIRS} PATH_SUFFIXES build)
 find_path(CEPGEN_INCLUDE CepGen/Generator.h HINTS ${CEPGEN_DIRS})
 
