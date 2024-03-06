@@ -15,8 +15,8 @@ cmake [-GNinja] ..
 [ninja|make -j]
 ```
 
-This will provide you with a `libCepGenGrape.so` shared object than can be passed directly to the main CepGen executable, for instance:
+This will provide you with a `libCepGenGrape.so` shared object than can be passed directly to the main CepGen executable, and steered using one of the example cards provided in the [cards](https://github.com/cepgen/CepGenGrapeProcess/tree/main/cards) directory, for instance:
 
 ```bash
-[path/to/bin]cepgen -a [path/to]libCepGenGrape.so -i [path/to]grape_ep_epee_cfg.py
+[path/to/bin/]cepgen -a [path/to/]libCepGenGrape.so -i [path/to/cards/]grape_ep_epee_cfg.py
 ```
