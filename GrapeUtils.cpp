@@ -452,7 +452,7 @@ namespace grape {
     smcnst_.pi = M_PI;
     smcnst_.pi2 = M_PI * M_PI;
     smcnst_.rad = M_PI / 180.;
-    smcnst_.gevpb = 1.;
+    smcnst_.gevpb = 1.;  //FIXME
     smcnst_.alpha = constants::ALPHA_EM;
     smcnst_.alphas = constants::ALPHA_QCD;
     smcnst_.alpha0 = constants::ALPHA_EM;

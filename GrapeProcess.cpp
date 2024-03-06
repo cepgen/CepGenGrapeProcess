@@ -90,10 +90,13 @@ public:
     gfinit_();
     initialiseKinematics();
 
-    bparm1_.ndim = 7 + (static_cast<grape::ProtonMode>(gep_proc_.process) != grape::ProtonMode::elastic) +
-                   (static_cast<grape::LeptonISRMode>(gep_proc_.isr_flag) == grape::LeptonISRMode::sfMethod);
-    for (int i = 0; i < bparm1_.ndim; ++i)
+    for (int i = 0; i < 7; ++i)
       defineVariable(m_x_[i], Mapping::linear, {0., 1.}, utils::format("x_%zu", i));
+    if (gep_proc_.process != (int)grape::ProtonMode::elastic)
+      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "x7");
+    if (gep_proc_.isr_flag == (int)grape::LeptonISRMode::sfMethod)
+      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "xisr");
+    bparm1_.ndim = ndim();
 
     kmreg_.mxreg = 2;  // two regions defined for cuts
 
