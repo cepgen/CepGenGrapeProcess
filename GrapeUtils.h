@@ -34,7 +34,12 @@ namespace grape {
   protected:
     template <typename U, typename V = U, size_t N = 0>
     void fillArray(const std::string& key, std::array<V, N>& var) const {
-      const auto vec = cepgen::SteeredObject<T>::template steer<std::vector<U> >(key);
+      auto vec = cepgen::SteeredObject<T>::template steer<std::vector<U> >(key);
+      if (vec.empty())
+        vec = std::vector<U>(N, cepgen::SteeredObject<T>::template steer<U>(key));
+      else if (vec.size() < N)
+        for (size_t i = vec.size(); i < N; ++i)
+          vec.emplace_back(*vec.rbegin());
       std::copy(vec.begin(), vec.end(), var.begin());
     }
     enum struct LimitSide { min = 0, max = 1 };
