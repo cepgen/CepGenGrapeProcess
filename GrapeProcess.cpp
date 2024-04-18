@@ -77,7 +77,7 @@ public:
                                     {Particle::Parton2, {PDG::photon}},
                                     {Particle::OutgoingBeam1, {PDG::electron}},
                                     {Particle::OutgoingBeam2, {PDG::proton}},
-                                    {Particle::CentralSystem, {pair_.pdgid, pair_.pdgid}}});
+                                    {Particle::CentralSystem, {+(spdgid_t)pair_.pdgid, -(spdgid_t)pair_.pdgid}}});
   }
   void prepareKinematics() override {
     grape::tuneKinematics();

@@ -6,6 +6,8 @@ process = cepgen.Module('grape',
     processParameters = cepgen.Parameters(
         mode = cepgen.ProcessMode.ElasticElastic,
         LPAIR = PDG.electron,
+        #PTMIN = [25.] * 4,
+        PTMIN = 25.,
     ),
     inKinematics = cepgen.Parameters(
         pz = (27.52, 820.),
