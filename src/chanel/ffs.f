@@ -25,7 +25,7 @@ C ********************************************************************
 C
 C
 C       ===========================================================
-        SUBROUTINE FFS(II,I,AAM,AM,AL,AR,CC,C,Q1,Q2,P1,P2,AALL)
+        SUBROUTINE chanel_FFS(II,I,AAM,AM,AL,AR,CC,C,Q1,Q2,P1,P2,AALL)
 C       ===========================================================
 C
 C
@@ -46,7 +46,7 @@ CXX     SUBROUTINE FFS(L,II,I,AAM,AM,AL,AR,CC,C,Q1,Q2,P1,P2,AALL)
         CALL FFS0(Q2,P2,AALL22)
         CALL FFS0(Q1,P2,AALL12)
         CALL FFS0(Q2,P1,AALL21)
- 
+
         R  = DFLOAT(I  - 2)
         RR = DFLOAT(II - 2)
         IF (AM.LE.0.0D0) THEN
@@ -55,12 +55,12 @@ CXX     SUBROUTINE FFS(L,II,I,AAM,AM,AL,AR,CC,C,Q1,Q2,P1,P2,AALL)
         IF (AAM.LE.0.0D0) THEN
           RR = 0.0D0
         ENDIF
- 
+
         J1 = (5-II)/2
         J2 = 3 - J1
         K1 = (5-I)/2
         K2 = 3 - K1
- 
+
         AALL(J1,K2)=(AR*AALL11(1))
      &               +(AL*R*RR*C(1)*CC(2)*AALL22(2))
         AALL(J2,K1)=(AL*AALL11(2))
@@ -69,8 +69,8 @@ CXX     SUBROUTINE FFS(L,II,I,AAM,AM,AL,AR,CC,C,Q1,Q2,P1,P2,AALL)
      &                -(AL*R*C(1)*AALL12(2))
         AALL(J1,K1)=-(AL*RR*CC(2)*AALL21(2))
      &                -(AR*R*C(2)*AALL12(1))
- 
- 
+
+
 CX      R=DFLOAT(I)-2.D0
 CX      RR=DFLOAT(II)-2.D0
 CX      IF (AM.LE.0.D0) R=0.D0
@@ -102,6 +102,6 @@ C       WRITE(6,100) Q1(4),P1(4),Q(4)
 CX
 CX      WRITE(6,*) 'II,I,AAM,AM',II,I,AAM,AM
 C100    FORMAT(2X,3D15.5)
- 
+
         RETURN
       END

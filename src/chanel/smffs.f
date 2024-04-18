@@ -71,19 +71,19 @@ CC      STOP
       LT(1) = L2
       LT(2) = L1
       LT(3) = 1
-      CALL FFS(K1,K2,AM1,AM2,CPR(1),CPR(2),CE1(1,2),CE2(1,1),
+      CALL chanel_FFS(K1,K2,AM1,AM2,CPR(1),CPR(2),CE1(1,2),CE2(1,1),
      &         PS1(1,1),PS1(1,2),PS2(1,1),PS2(1,2), AVT(1,1,1,1))
       IF(L1.EQ.4) THEN
-          CALL FFS( 3,K2,AM0,AM2,CPR(1),CPR(2),CE1(1,4),CE2(1,1),
+          CALL chanel_FFS( 3,K2,AM0,AM2,CPR(1),CPR(2),CE1(1,4),CE2(1,1),
      &             PS1(1,3),P0,      PS2(1,1),PS2(1,2), AVT(1,1,2,1))
       ENDIF
       IF(L2.EQ.4) THEN
-          CALL FFS(K1, 3,AM1,AM0,CPR(1),CPR(2),CE1(1,2),CE2(1,3),
+          CALL chanel_FFS(K1, 3,AM1,AM0,CPR(1),CPR(2),CE1(1,2),CE2(1,3),
      &             PS1(1,1),PS1(1,2),PS2(1,3),P0,       AVT(1,1,1,2))
   300   CONTINUE
       ENDIF
       IF(L1.EQ.4 .AND. L2.EQ.4) THEN
-          CALL FFS( 3, 3,AM0,AM0,CPR(1),CPR(2),CE1(1,4),CE2(1,3),
+          CALL chanel_FFS( 3, 3,AM0,AM0,CPR(1),CPR(2),CE1(1,4),CE2(1,3),
      &             PS1(1,3),P0,      PS2(1,3),P0,       AVT(1,1,2,2))
   400   CONTINUE
       ENDIF
