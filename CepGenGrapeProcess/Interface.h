@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CepGenGrapeProcess_GrapeInterface_h
-#define CepGenGrapeProcess_GrapeInterface_h
+#ifndef CepGenGrapeProcess_Interface_h
+#define CepGenGrapeProcess_Interface_h
 
 #include <array>
 #include <complex>

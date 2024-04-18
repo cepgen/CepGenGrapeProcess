@@ -21,9 +21,9 @@
 
 #include <cmath>
 
-#include "GrapeInterface.h"
-#include "GrapeTypes.h"
-#include "GrapeUtils.h"
+#include "CepGenGrapeProcess/Interface.h"
+#include "CepGenGrapeProcess/Types.h"
+#include "CepGenGrapeProcess/Utils.h"
 
 using namespace cepgen;
 using namespace std::string_literals;

@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CepGenGrapeProcess_GrapeTypes_h
-#define CepGenGrapeProcess_GrapeTypes_h
+#ifndef CepGenGrapeProcess_Types_h
+#define CepGenGrapeProcess_Types_h
 
 namespace grape {
   enum struct EwkProductionMode { directBetheHeitler = 1, betheHeitler = 2, qed = 3, ew = 4, onlyCO = 13, onlyZ0 = 14 };

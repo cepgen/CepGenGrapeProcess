@@ -24,9 +24,9 @@
 #include <CepGen/Process/Process.h>
 #include <CepGen/Utils/String.h>
 
-#include "GrapeInterface.h"
-#include "GrapeTypes.h"
-#include "GrapeUtils.h"
+#include "CepGenGrapeProcess/Interface.h"
+#include "CepGenGrapeProcess/Types.h"
+#include "CepGenGrapeProcess/Utils.h"
 
 using namespace cepgen;
 
@@ -90,7 +90,7 @@ public:
     gfinit_();
     initialiseKinematics();
 
-    for (int i = 0; i < 7; ++i)
+    for (size_t i = 0; i < 7; ++i)
       defineVariable(m_x_[i], Mapping::linear, {0., 1.}, utils::format("x_%zu", i));
     if (gep_proc_.process != (int)grape::ProtonMode::elastic)
       defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "x7");
@@ -112,8 +112,8 @@ public:
         }
       }
     }
-
-    CG_INFO("GrapeProcess") << "Grape process initialised. Internal process number ('jproc'): " << amjprc_.jproc << ".";
+    CG_INFO("GrapeProcess") << "Grape process initialised for dim-" << ndim() << " phase space volume.\n\t"
+                            << "Internal process number ('jproc'): " << amjprc_.jproc << ".";
   }
   double computeWeight() override { return func_(m_x_.data()); }
   void fillKinematics() override {

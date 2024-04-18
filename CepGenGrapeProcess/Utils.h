@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CepGenGrapeProcess_GrapeUtils_h
-#define CepGenGrapeProcess_GrapeUtils_h
+#ifndef CepGenGrapeProcess_Utils_h
+#define CepGenGrapeProcess_Utils_h
 
 #include <CepGen/Core/SteeredObject.h>
 #include <CepGen/Physics/PDG.h>
