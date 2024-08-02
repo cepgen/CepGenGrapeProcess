@@ -3,7 +3,7 @@ project(CepGenGrapeProcess)
 enable_language(Fortran)
 
 set(CEPGEN_PATH ${CEPGEN_PATH} $ENV{CEPGEN_PATH})
-set(CMAKE_MODULE_PATH ${CEPGEN_PATH}/cmake)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CEPGEN_PATH}/cmake)
 find_package(CepGen REQUIRED)
 
 file(GLOB SOURCES src/*.cpp)
