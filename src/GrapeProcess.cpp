@@ -71,13 +71,13 @@ public:
   proc::ProcessPtr clone() const override { return proc::ProcessPtr(new GrapeProcess(*this)); }
 
   void addEventContent() override {
-    proc::Process::setEventContent({{Particle::IncomingBeam1, {PDG::electron}},
-                                    {Particle::IncomingBeam2, {PDG::proton}},
-                                    {Particle::Parton1, {PDG::photon}},
-                                    {Particle::Parton2, {PDG::photon}},
-                                    {Particle::OutgoingBeam1, {PDG::electron}},
-                                    {Particle::OutgoingBeam2, {PDG::proton}},
-                                    {Particle::CentralSystem, {+(spdgid_t)pair_.pdgid, -(spdgid_t)pair_.pdgid}}});
+    proc::Process::setEventContent({{Particle::Role::IncomingBeam1, {PDG::electron}},
+                                    {Particle::Role::IncomingBeam2, {PDG::proton}},
+                                    {Particle::Role::Parton1, {PDG::photon}},
+                                    {Particle::Role::Parton2, {PDG::photon}},
+                                    {Particle::Role::OutgoingBeam1, {PDG::electron}},
+                                    {Particle::Role::OutgoingBeam2, {PDG::proton}},
+                                    {Particle::Role::CentralSystem, {+(spdgid_t)pair_.pdgid, -(spdgid_t)pair_.pdgid}}});
   }
   void prepareKinematics() override {
     grape::tuneKinematics();
@@ -100,7 +100,7 @@ public:
 
     kmreg_.mxreg = 2;  // two regions defined for cuts
 
-    CG_INFO("GrapeProcess:prepareKinematics") << event().oneWithRole(Particle::IncomingBeam1).pdgId() << " beam.";
+    CG_INFO("GrapeProcess:prepareKinematics") << event().oneWithRole(Particle::Role::IncomingBeam1).pdgId() << " beam.";
     if (gep_beam_.kf_lbeam == 11) {  // do a few swaps for electron beams
       for (const auto& id : {1, 3, 4, 5})
         kminfo_.kfcode[id] *= -1;
@@ -153,7 +153,7 @@ private:
   inline void initialiseKinematics() {
     gep_beam_.p_e_beam = pA().p() * 1.e3;
     gep_beam_.p_p_beam = pB().p() * 1.e3;
-    gep_beam_.kf_lbeam = event().oneWithRole(Particle::IncomingBeam1).pdgId();
+    gep_beam_.kf_lbeam = event().oneWithRole(Particle::Role::IncomingBeam1).pdgId();
 
     // 1=proton, 2=electron
     gep_lab_.p1_lab = pB().p();

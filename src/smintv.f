@@ -24,7 +24,7 @@
 *(TA)
       if (isrpol .GT. 0) then
         if (AM .EQ. 0D0) then   ! This vector boson is photon.
-           Alpha_tmp = cepgen_alphaem(dsqrt(VM))  ! TA(24/09/2000)
+           Alpha_tmp = cepgen_alphaem('fixed', dsqrt(VM))  ! TA(24/09/2000)
            do 1000 i = 1, LP
             EW(i) = EW(i) *Alpha_tmp
  1000      continue
