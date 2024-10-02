@@ -153,7 +153,7 @@ extern struct {
 extern struct {
   int process, lpair, qflv, isr_flag, nn_isr, isr_scale;
   float factor_isr;
-  std::array<int, 11> jgra_flag;
+  std::array<int, 10> jgra_flag;
   int ngroup, nset, istrf;
   float wmin, wmax;
   int merge, iqcd_scale;

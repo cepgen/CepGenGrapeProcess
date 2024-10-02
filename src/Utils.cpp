@@ -80,7 +80,7 @@ namespace grape {
     gep_proc_.nn_isr = steer<int>("NNISR");
     gep_proc_.isr_scale = steer<double>("ISRSCALE");
     gep_proc_.factor_isr = steer<double>("FACTISR");
-    fillArray<double>("GRAFLG", gep_proc_.jgra_flag);
+    fillArray<int>("GRAFLG", gep_proc_.jgra_flag);
     gep_proc_.ngroup = steer<int>("NGROUP");
     gep_proc_.nset = steer<int>("NSET");
     gep_proc_.istrf = steer<int>("STRF");
@@ -102,7 +102,7 @@ namespace grape {
     desc.add<int>("NSET", 32).setDescription("PDF set from PDFlib");
     desc.add<int>("STRF", 1);
     desc.add<bool>("MERGE", false).setDescription("merging mode in the DIS process");
-    desc.add<bool>("QCDSCALE", 1);
+    desc.add<int>("QCDSCALE", 1);
     return desc;
   }
 
@@ -198,12 +198,21 @@ namespace grape {
     saveLimits(steer<Limits>("PTMXCT"), gep_cut_.ptmax_cut);
     saveLimits(steer<Limits>("THPTMCT"), gep_cut_.the_ptmax_cut);
     saveLimits(steer<Limits>("MASSELL"), gep_cut_.massell_cut);
-    const auto massll = steer<std::vector<double> >("MASSLL"), massqll = steer<std::vector<double> >("MASSQLL");
-    for (size_t i = 0; i < 2; ++i) {
-      gep_cut_.mass56_cut[i][0] = massll.at(2 * i);
-      gep_cut_.mass56_cut[i][1] = massll.at(2 * i + 1);
-      gep_cut_.massqll_cut[i][0] = massqll.at(2 * i);
-      gep_cut_.massqll_cut[i][1] = massqll.at(2 * i + 1);
+    {
+      size_t i = 0;
+      for (const auto& lim : steer<std::vector<Limits> >("MASSLL")) {
+        gep_cut_.mass56_cut[i][0] = lim.min();
+        gep_cut_.mass56_cut[i][1] = lim.max();
+        ++i;
+      }
+    }
+    {
+      size_t i = 0;
+      for (const auto& lim : steer<std::vector<Limits> >("MASSQLL")) {
+        gep_cut_.massqll_cut[i][0] = lim.min();
+        gep_cut_.massqll_cut[i][1] = lim.max();
+        ++i;
+      }
     }
     gep_cut_.ivisi = steer<int>("IVISI");
     fillLimitsFromPair<double>(gep_cut_.the_visi_min, gep_cut_.the_visi_max, "THEVMIN", "THEVMAX");
@@ -295,7 +304,7 @@ namespace grape {
     desc.add<bool>("PTMCTFLG", true);
     desc.add<Limits>("PTMXCT", {0.}).setDescription("two-lepton transverse momentum range");
     desc.add<Limits>("THPTMCT", {0., 180.}).setDescription("two-lepton theta range");
-    desc.add("MASSLL", std::vector<double>{0., kMaxValue, 0., kMaxValue}).setDescription("two-lepton minimal mass");
+    desc.add("MASSLL", std::vector<Limits>(2, Limits{0., kMaxValue})).setDescription("two-lepton minimal mass");
     desc.add<Limits>("MASSELL", {0.}).setDescription("two-lepton+scattered electron mass range");
     desc.add("MASSQLL", std::vector<double>{5., kMaxValue, 5., kMaxValue})
         .setDescription("two-lepton+scattered quark minimal mass (for DIS process)");
@@ -452,7 +461,7 @@ namespace grape {
     smcnst_.pi = M_PI;
     smcnst_.pi2 = M_PI * M_PI;
     smcnst_.rad = M_PI / 180.;
-    smcnst_.gevpb = 1.;  //FIXME
+    smcnst_.gevpb = constants::GEVM2_TO_PB;
     smcnst_.alpha = constants::ALPHA_EM;
     smcnst_.alphas = constants::ALPHA_QCD;
     smcnst_.alpha0 = constants::ALPHA_EM;

@@ -46,15 +46,14 @@ public:
       throw CG_FATAL("GrapeProcess") << "Electron polarisation should be between 0 and 1. User-provided value: "
                                      << electron_pol_ << ".";
     std::fill(m_x_.begin(), m_x_.end(), 0.);
-    {
-      int two = 2;
-      start_grape_(two);
+    {  // call the Fortran initialisation subroutine
+      int mode = 2;
+      start_grape_(mode);
     }
 
     gep_beam_.ebeam_pol = {electron_pol_, electron_pol_polar_, electron_pol_azimuthal_};
 
     grape::MiscBlockFiller{params_};
-
     grape::initialiseConstants();  // setmas in Grape
     amparm_();
     if (debug_)
@@ -93,9 +92,9 @@ public:
     for (size_t i = 0; i < 7; ++i)
       defineVariable(m_x_[i], Mapping::linear, {0., 1.}, utils::format("x_%zu", i));
     if (gep_proc_.process != (int)grape::ProtonMode::elastic)
-      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "x7");
+      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "x_inel");
     if (gep_proc_.isr_flag == (int)grape::LeptonISRMode::sfMethod)
-      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "xisr");
+      defineVariable(m_x_[ndim()], Mapping::linear, {0., 1.}, "x_isr");
     bparm1_.ndim = ndim();
 
     kmreg_.mxreg = 2;  // two regions defined for cuts
@@ -151,9 +150,10 @@ private:
   /// Initialise interfacing common blocks' kinematics definitions
   /// \note kinit_4f in Grape
   inline void initialiseKinematics() {
-    gep_beam_.p_e_beam = pA().p() * 1.e3;
-    gep_beam_.p_p_beam = pB().p() * 1.e3;
-    gep_beam_.kf_lbeam = event().oneWithRole(Particle::Role::IncomingBeam1).pdgId();
+    gep_beam_.p_e_beam = pA().p() * 1.e3;  // EBEAM expressed in MeV/c
+    gep_beam_.p_p_beam = pB().p() * 1.e3;  // PBEAM expressed in MeV/c
+    gep_beam_.kf_lbeam =
+        event().oneWithRole(Particle::Role::IncomingBeam1).integerPdgId();  // KFLBEAM, KF code of the lepton beam
 
     // 1=proton, 2=electron
     gep_lab_.p1_lab = pB().p();
@@ -182,18 +182,22 @@ private:
                                               << "  beta*gamma of CMS = " << gep_lab_.betgamcms_lab[0] << "\n"
                                               << "  masses            = " << kmmass_.amass1 << "\n"
                                               << "***********************************************";
-
-    float totmas = 0;
-    for (size_t i = 3; i < 6; ++i)
-      totmas += kmmass_.amass1[i];
-    grape::saveLimits(Limits{1.08}, gep_proc_.wmin, gep_proc_.wmax);
-    gep_proc_.wmax = std::min(gep_proc_.wmax, float(kinem1_.w[0]) - totmas);
+    {  // check on centre-of-mass energy (should be sufficient to create the final state particles)
+      float totmas = 0;
+      for (size_t i = 2; i < 6; ++i)
+        totmas += kmmass_.amass1[i];
+      if (kinem1_.w[0] < totmas)
+        throw CG_ERROR("GrapeProcess:.initialiseKinematics")
+            << "CM energy = " << kinem1_.w[0] << " GeV < sum of final particles mass = " << totmas << " GeV.";
+      grape::saveLimits(Limits{1.08}, gep_proc_.wmin, gep_proc_.wmax);
+      gep_proc_.wmax = std::min(gep_proc_.wmax, float(kinem1_.w[0]) - totmas);
+    }
 
     grape::saveLimits(Limits{0., 1.}, w50513_.xmin, w50513_.xmax);
     grape::saveLimits(Limits{0., 1.e4}, w50513_.q2min, w50513_.q2max);
-    cut001_4f_.opncut = 0.;
 
     // angular cuts in CMS
+    cut001_4f_.opncut = 0.;
     double angcut = 0.;
     grape::saveLimits(Limits{-std::cos(angcut), std::cos(angcut)}, cut001_4f_.coscut[0][0], cut001_4f_.coscut[0][1]);
     grape::saveLimits(Limits{-std::cos(angcut), std::cos(angcut)}, cut001_4f_.coscut[1][0], cut001_4f_.coscut[1][1]);
@@ -253,11 +257,10 @@ private:
   const ParticleProperties pair_;
   const float electron_pol_, electron_pol_polar_, electron_pol_azimuthal_;
 
-  const Momentum vec_electron_pol_;
-  const double me_, me2_;
-
-  // mapped variables
-  std::array<double, 50> m_x_;
+  const Momentum vec_electron_pol_;  ///< electron polarisation vector
+  const double me_;                  ///< electron mass
+  const double me2_;                 ///< electron squared mass;
+  std::array<double, 10> m_x_;       ///< mapped variables
 };
 // register process
 REGISTER_PROCESS("grape", GrapeProcess);
