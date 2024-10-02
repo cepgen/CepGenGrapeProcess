@@ -23,6 +23,20 @@ namespace grape {
   enum struct EwkProductionMode { directBetheHeitler = 1, betheHeitler = 2, qed = 3, ew = 4, onlyCO = 13, onlyZ0 = 14 };
   enum struct LeptonISRMode { none = 0, sfMethod = 1, qedPartonShowerMethod = 2 };
   enum struct ProtonMode { elastic = 1, quasiElastic = 2, dis = 3 };
+  /// Merging mode for the DIS process
+  enum struct DISMergeMode {
+    off = 0,
+    u_ubar_d_dbar = 1234,
+    u_ubar_d_dbar_s_sbar = 123456,
+    u_ubar_d_dbar_s_sbar_c_cbar = 12345678,
+    u_ubar_d_dbar_s_sbar_c_cbar_b_bbar = 1234567890,
+    u_c = 17,
+    ubar_cbar = 28,
+    d_s = 35,
+    dbar_sbar = 46,
+    d_s_b = 359,
+    dbar_sbar_bbar = 460
+  };
 }  // namespace grape
 
 #endif

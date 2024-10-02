@@ -84,7 +84,7 @@ namespace grape {
     gep_proc_.ngroup = steer<int>("NGROUP");
     gep_proc_.nset = steer<int>("NSET");
     gep_proc_.istrf = steer<int>("STRF");
-    gep_proc_.merge = steer<bool>("MERGE");
+    gep_proc_.merge = (int)steerAs<int, DISMergeMode>("MERGE");
     gep_proc_.iqcd_scale = steer<int>("QCDSCALE");
   }
 
@@ -94,6 +94,20 @@ namespace grape {
     desc.addAs<int, pdgid_t>("LPAIR", PDG::muon).setDescription("lepton pair considered");
     desc.addAs<int, pdgid_t>("QFLV", PDG::up).setDescription("scattered quark in DIS");
     desc.addAs<int, LeptonISRMode>("ISR", LeptonISRMode::sfMethod).setDescription("ISR mode for the lepton beam");
+    desc.addAs<int, DISMergeMode>("MERGE", DISMergeMode::off)
+        .setDescription("merging mode in the DIS process")
+        .allow((int)DISMergeMode::off)
+        .allow((int)DISMergeMode::u_ubar_d_dbar)
+        .allow((int)DISMergeMode::u_ubar_d_dbar_s_sbar)
+        .allow((int)DISMergeMode::u_ubar_d_dbar_s_sbar_c_cbar)
+        .allow((int)DISMergeMode::u_ubar_d_dbar_s_sbar_c_cbar_b_bbar)
+        .allow((int)DISMergeMode::u_c)
+        .allow((int)DISMergeMode::ubar_cbar)
+        .allow((int)DISMergeMode::d_s)
+        .allow((int)DISMergeMode::dbar_sbar)
+        .allow((int)DISMergeMode::d_s_b)
+        .allow((int)DISMergeMode::dbar_sbar_bbar);
+    ;
     desc.add<int>("NNISR", -1);
     desc.add<double>("ISRSCALE", 1.);
     desc.add<double>("FACTISR", 1.);
@@ -101,7 +115,6 @@ namespace grape {
     desc.add<int>("NGROUP", 4).setDescription("PDF set author group from PDFlib");
     desc.add<int>("NSET", 32).setDescription("PDF set from PDFlib");
     desc.add<int>("STRF", 1);
-    desc.add<bool>("MERGE", false).setDescription("merging mode in the DIS process");
     desc.add<int>("QCDSCALE", 1);
     return desc;
   }
