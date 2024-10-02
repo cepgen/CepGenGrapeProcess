@@ -317,9 +317,9 @@ namespace grape {
     desc.add<bool>("PTMCTFLG", true);
     desc.add<Limits>("PTMXCT", {0.}).setDescription("two-lepton transverse momentum range");
     desc.add<Limits>("THPTMCT", {0., 180.}).setDescription("two-lepton theta range");
-    desc.add("MASSLL", std::vector<Limits>(2, Limits{0., kMaxValue})).setDescription("two-lepton minimal mass");
+    desc.add("MASSLL", std::vector<Limits>(2, Limits{})).setDescription("two-lepton minimal mass");
     desc.add<Limits>("MASSELL", {0.}).setDescription("two-lepton+scattered electron mass range");
-    desc.add("MASSQLL", std::vector<double>{5., kMaxValue, 5., kMaxValue})
+    desc.add("MASSQLL", std::vector<Limits>(2, Limits{5.}))
         .setDescription("two-lepton+scattered quark minimal mass (for DIS process)");
     desc.add<int>("IVISI", -1).setDescription("number of particles required to satisfy (X)V(MIN/MAX) cuts");
     desc.add("THEVMIN", std::vector<double>(4, 0.))

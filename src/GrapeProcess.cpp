@@ -81,8 +81,6 @@ public:
   void prepareKinematics() override {
     grape::tuneKinematics();
 
-    if (debug_)
-      write_cards_();
     get_proc_();
     get_graph_flag_();
 
@@ -113,6 +111,9 @@ public:
     }
     CG_INFO("GrapeProcess") << "Grape process initialised for dimension-" << ndim() << " phase space volume.\n\t"
                             << "Internal process number ('jproc'): " << amjprc_.jproc << ".";
+
+    if (debug_)
+      write_cards_();
   }
   double computeWeight() override { return func_(m_x_.data()); }
   void fillKinematics() override {
@@ -164,7 +165,7 @@ private:
       kinem1_.s[i] = mp2_ + me2_ + 2. * (gep_lab_.e1_lab * gep_lab_.e2_lab + gep_lab_.p1_lab * gep_lab_.p2_lab);
       kinem1_.w[i] = std::sqrt(std::max(kinem1_.s[i], 0.));
       gep_lab_.pcms_lab[i] = gep_lab_.p1_lab - gep_lab_.p2_lab;
-      gep_lab_.ecms_lab[i] = gep_lab_.e1_lab - gep_lab_.e2_lab;
+      gep_lab_.ecms_lab[i] = gep_lab_.e1_lab + gep_lab_.e2_lab;
       gep_lab_.gammacms_lab[i] = gep_lab_.ecms_lab[i] / kinem1_.w[i];
       gep_lab_.betgamcms_lab[i] = gep_lab_.pcms_lab[i] / kinem1_.w[i];
     }
