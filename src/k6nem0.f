@@ -664,7 +664,7 @@ C        write(6,*) '  (User need not to worry about this.)'
        END IF
       END IF
       colmbf=1.d0
-      FACT = GEVPB * Flux_factor( S(3), amass2(1), amass2(2), jump )
+      FACT = Flux_factor( S(3), amass2(1), amass2(2), jump )
       if (jump.EQ.1) then
        YACOB = 0
        RETURN

@@ -111,7 +111,7 @@ public:
         }
       }
     }
-    CG_INFO("GrapeProcess") << "Grape process initialised for dim-" << ndim() << " phase space volume.\n\t"
+    CG_INFO("GrapeProcess") << "Grape process initialised for dimension-" << ndim() << " phase space volume.\n\t"
                             << "Internal process number ('jproc'): " << amjprc_.jproc << ".";
   }
   double computeWeight() override { return func_(m_x_.data()); }
@@ -207,12 +207,12 @@ private:
     grape::saveLimits(Limits{-std::cos(angcut), std::cos(angcut)}, cut001_4f_.coscut[3][0], cut001_4f_.coscut[3][1]);
 
     // energy  cuts in CMS
+    const auto max_beam_energy = std::max(gep_lab_.e1_lab, gep_lab_.e2_lab);
     for (size_t i = 0; i < 4; ++i)
-      grape::saveLimits(Limits{kmmass_.amass1[i + 2], std::max(gep_lab_.e1_lab, gep_lab_.e2_lab)},
-                        cut001_4f_.engyct[i][0],
-                        cut001_4f_.engyct[i][1]);
+      grape::saveLimits(
+          Limits{kmmass_.amass1[i + 2], max_beam_energy}, cut001_4f_.engyct[i][0], cut001_4f_.engyct[i][1]);
 
-    grape::saveLimits(  // cut on invariant mass
+    grape::saveLimits(  // cut on invariant mass (particles 3-4)
         Limits{kmmass_.amass1[2] + kmmass_.amass1[3], kinem1_.w[0] - kmmass_.amass1[4] - kmmass_.amass1[5]},
         cut001_4f_.amasct[0][0],
         cut001_4f_.amasct[0][1]);
@@ -248,7 +248,7 @@ private:
     {
       int jump = 0;  //FIXME
       double mp2 = mp2_, me2 = me2_;
-      kinem1_.fact = /*constants::GEVM2_TO_PB **/ flux_factor_(kinem1_.s[0], mp2, me2, jump);
+      kinem1_.fact = constants::GEVM2_TO_PB * flux_factor_(kinem1_.s[0], mp2, me2, jump);
     }
     gep_beam_.lpol_ebeam = electron_pol_ != 0.;
     gep_beam_.ipol_ebeam = gep_beam_.lpol_ebeam && electron_pol_polar_ != 0.;

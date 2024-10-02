@@ -20,8 +20,17 @@
 #define CepGenGrapeProcess_Types_h
 
 namespace grape {
-  enum struct EwkProductionMode { directBetheHeitler = 1, betheHeitler = 2, qed = 3, ew = 4, onlyCO = 13, onlyZ0 = 14 };
+  /// Feynman diagram selection
+  enum struct EwkProductionMode {
+    betheHeitlerWithoutEEInteference = 1,  ///< 2-photon B-H (w/o e+e- interference in dielectron case)
+    betheHeitler = 2,                      ///< 2-photon B-H (with e+e- interference in dielectron case)
+    qed = 3,                               ///< QED diagrams (all the diagrams w/o the Z0 contribution)
+    ew = 4,                                ///< All diagrams
+    qedCompton = 13,                       ///< QED-Compton type diagrams
+    onlyZ0 = 14                            ///< Z0 production diagrams
+  };
   enum struct LeptonISRMode { none = 0, sfMethod = 1, qedPartonShowerMethod = 2 };
+  /// Process type of the proton vertex
   enum struct ProtonMode { elastic = 1, quasiElastic = 2, dis = 3 };
   /// Merging mode for the DIS process
   enum struct DISMergeMode {
