@@ -213,18 +213,23 @@ namespace grape {
     saveLimits(steer<Limits>("MASSELL"), gep_cut_.massell_cut);
     {
       size_t i = 0;
-      for (const auto& lim : steer<std::vector<Limits> >("MASSLL")) {
-        gep_cut_.mass56_cut[i][0] = lim.min();
-        gep_cut_.mass56_cut[i][1] = lim.max();
-        ++i;
+      const auto& massll = steer<std::vector<Limits> >("MASSLL");
+      for (const auto& lim : massll) {
+        if (i >= 2)
+          throw CG_FATAL("grape:CutsBlockFiller")
+              << "Invalid number of cuts defined for MASSLL parameter ; expecting at most 2, given: " << massll << ".";
+        saveLimits(lim, gep_cut_.mass56_cut[i++]);
       }
     }
     {
       size_t i = 0;
-      for (const auto& lim : steer<std::vector<Limits> >("MASSQLL")) {
-        gep_cut_.massqll_cut[i][0] = lim.min();
-        gep_cut_.massqll_cut[i][1] = lim.max();
-        ++i;
+      const auto& massqll = steer<std::vector<Limits> >("MASSQLL");
+      for (const auto& lim : massqll) {
+        if (i >= 2)
+          throw CG_FATAL("grape:CutsBlockFiller")
+              << "Invalid number of cuts defined for MASSQLL parameter ; expecting at most 2, given: " << massqll
+              << ".";
+        saveLimits(lim, gep_cut_.massqll_cut[i++]);
       }
     }
     gep_cut_.ivisi = steer<int>("IVISI");

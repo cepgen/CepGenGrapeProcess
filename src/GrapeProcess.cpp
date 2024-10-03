@@ -113,7 +113,7 @@ public:
                             << "Internal process number ('jproc'): " << amjprc_.jproc << ".";
 
     if (debug_)
-      write_cards_();
+      write_cards_();  // dump the steering card-type information into the output stream
   }
   double computeWeight() override { return func_(m_x_.data()); }
   void fillKinematics() override {
