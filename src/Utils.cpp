@@ -18,7 +18,10 @@
 
 #include <CepGen/Core/Exception.h>
 #include <CepGen/Modules/RandomGeneratorFactory.h>
+#include <CepGen/Modules/StructureFunctionsFactory.h>
 #include <CepGen/Physics/Constants.h>
+#include <CepGen/Physics/Utils.h>
+#include <CepGen/StructureFunctions/Parameterisation.h>
 #include <CepGen/Utils/RandomGenerator.h>
 
 #include <cmath>
@@ -526,6 +529,7 @@ namespace grape {
   }
 
   std::unique_ptr<cepgen::utils::RandomGenerator> random_number_generator;
+  std::unique_ptr<cepgen::strfun::Parameterisation> structure_functions_brasse, structure_functions_allm97;
 }  // namespace grape
 
 extern "C" {
@@ -533,5 +537,20 @@ double cepgen_random_number_(void) {
   if (!grape::random_number_generator)
     grape::random_number_generator = cepgen::RandomGeneratorFactory::get().build("stl");
   return grape::random_number_generator->uniform();
+}
+
+void cepgen_hybrid_structure_functions_(double& q2, double& w, double& w1, double& w2) {
+  static const auto mp2 = cepgen::PDG::get().mass(cepgen::PDG::proton);
+  const auto xbj = cepgen::utils::xBj(q2, mp2, w * w);
+  if (w < 2.) {
+    if (!grape::structure_functions_brasse)
+      grape::structure_functions_brasse = cepgen::StructureFunctionsFactory::get().build("FioreBrasse");
+    w1 = grape::structure_functions_brasse->W1(xbj, q2);
+    w2 = grape::structure_functions_brasse->W2(xbj, q2);
+  }
+  if (!grape::structure_functions_allm97)
+    grape::structure_functions_allm97 = cepgen::StructureFunctionsFactory::get().build("ALLM97");
+  w1 = grape::structure_functions_allm97->W1(xbj, q2);
+  w2 = grape::structure_functions_allm97->W2(xbj, q2);
 }
 }
