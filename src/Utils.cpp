@@ -17,7 +17,9 @@
  */
 
 #include <CepGen/Core/Exception.h>
+#include <CepGen/Modules/RandomGeneratorFactory.h>
 #include <CepGen/Physics/Constants.h>
+#include <CepGen/Utils/RandomGenerator.h>
 
 #include <cmath>
 
@@ -522,4 +524,14 @@ namespace grape {
         gep_kine_.ireso56 = -1;
     }
   }
+
+  std::unique_ptr<cepgen::utils::RandomGenerator> random_number_generator;
 }  // namespace grape
+
+extern "C" {
+double cepgen_random_number_(void) {
+  if (!grape::random_number_generator)
+    grape::random_number_generator = cepgen::RandomGeneratorFactory::get().build("stl");
+  return grape::random_number_generator->uniform();
+}
+}

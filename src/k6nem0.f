@@ -36,8 +36,8 @@
      &                 ,vec_isr
 *-----------------------------------------------------------------------
       include 'graepia.inc'
-      double precision  DRN, Flux_factor
-       external         DRN, Flux_factor
+      double precision  CepGen_random_number, Flux_factor
+       external         CepGen_random_number, Flux_factor
 *-----------------------------------------------------------------------
       JUMP   = 0
       YACOB  = 0.D0
@@ -239,7 +239,7 @@ cccccccc
        PHIX = X(NDIM)*2D0*PI
       else
        if (ROT_kinem_flag) then
-        PHIX = DRN(idummy) *2D0*PI
+        PHIX = CepGen_random_number() *2D0*PI
        else
         PHIX = 0D0
        endif
@@ -277,7 +277,7 @@ cccccccc
           AJACOB = AJACOB *DD*Dnn*X(2)**(Dnn-1D0)
          endif
         else
-         RN_mj = DRN(idummy)
+         RN_mj = CepGen_random_number()
          do j = 0, num_reso_mj
           if (RN_mj .LT. weisel_mj(j)) GOTO 4100
          enddo

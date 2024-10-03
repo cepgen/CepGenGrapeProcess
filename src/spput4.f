@@ -12,8 +12,8 @@
      &               ,grcevt(0:mxlag-1, 0:MAXREG-1)
       dimension  cratio(0:MAXREG-1)
       common /sp4vec/ vec(4,mxextn)
-      real*8    drn
-      external  drn
+      real*8    CepGen_random_number
+      external  CepGen_random_number
 *-----------------------------------------------------------------------
 * ------- selection ------------------
       ireg = 0
@@ -27,7 +27,7 @@
            tmpsum = tmpsum + answrk(i)
            cratio(i) = tmpsum/allsum
         enddo
-        cran = drn(idummy)
+        cran = CepGen_random_number()
         do 3000 i = 0, nreg-1
            if( cratio(i) .gt. cran ) then
                ireg = i
