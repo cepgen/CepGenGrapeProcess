@@ -553,4 +553,7 @@ void cepgen_hybrid_structure_functions_(double& q2, double& w, double& w1, doubl
   w1 = grape::structure_functions_allm97->W1(xbj, q2);
   w2 = grape::structure_functions_allm97->W2(xbj, q2);
 }
+
+void taswap_(double& lhs, double& rhs) { std::swap(lhs, rhs); }
+bool ibtest_(int& variable, int& bit) { return (variable >> bit) & 0x1; }
 }
