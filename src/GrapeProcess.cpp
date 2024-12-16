@@ -22,6 +22,7 @@
 #include <CepGen/Modules/ProcessFactory.h>
 #include <CepGen/Physics/PDG.h>
 #include <CepGen/Process/Process.h>
+#include <CepGen/Utils/StreamCollector.h>
 #include <CepGen/Utils/String.h>
 
 #include "CepGenGrapeProcess/Interface.h"
@@ -46,8 +47,8 @@ public:
       throw CG_FATAL("GrapeProcess") << "Electron polarisation should be between 0 and 1. User-provided value: "
                                      << electron_pol_ << ".";
     std::fill(m_x_.begin(), m_x_.end(), 0.);
-    {  // call the Fortran initialisation subroutine
-      int mode = 2;
+    {                // call the Fortran initialisation subroutine
+      int mode = 2;  // event generation mode used to retrieve the functional form
       start_grape_(mode);
     }
 
@@ -56,8 +57,12 @@ public:
     grape::MiscBlockFiller{params_};
     grape::initialiseConstants();  // setmas in Grape
     amparm_();
-    if (debug_)
+    {
+      std::string logging;
+      auto sc = utils::StreamCollector(logging);
       prmass_();
+      CG_DEBUG("GrapeProcess") << "From prmass: " << logging;
+    }
 
     grape::ProcBlockFiller{params_};
     grape::EWBlockFiller{params_};
@@ -128,7 +133,7 @@ public:
   static ParametersDescription description() {
     auto desc = proc::Process::description();
     desc.setDescription("γγ → l⁺l¯ (Grape)");
-    desc.add<bool>("debug", false).setDescription("debugging mode (Fortran blocks printout)");
+    desc.add<bool>("debug", true).setDescription("debugging mode (Fortran blocks printout)");
 
     desc.add<double>("electronPolarisation", 0.)
         .setDescription("degree of polarisation of the electron beam (between 0 and 1)");
