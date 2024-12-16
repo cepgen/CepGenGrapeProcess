@@ -158,9 +158,5 @@ c??   smproc = 't-bar positron  --> t-bar positron tau anti-tau '
       kfcode(5) =  15
       kfcode(6) = -15
 
-*-----------------------------------------------------------------------
-* initialization of summary table
-      call amclr
-
       return
       end

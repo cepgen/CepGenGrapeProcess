@@ -158,9 +158,5 @@ c??   smproc = 'u positron  --> u positron electron positron '
       kfcode(5) =  11
       kfcode(6) = -11
 
-*-----------------------------------------------------------------------
-* initialization of summary table
-      call amclr
-
       return
       end

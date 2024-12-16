@@ -26,6 +26,7 @@
 #include <CepGen/Utils/String.h>
 
 #include "CepGenGrapeProcess/Interface.h"
+#include "CepGenGrapeProcess/Process.h"
 #include "CepGenGrapeProcess/Types.h"
 #include "CepGenGrapeProcess/Utils.h"
 
@@ -89,7 +90,9 @@ public:
     get_proc_();
     get_graph_flag_();
 
-    gfinit_();
+    process_ = grape::Process::fromProcessId(amjprc_.jproc);
+    process_.initialise();
+    process_.clear();  // initialization of summary table
     initialiseKinematics();
 
     for (size_t i = 0; i < 7; ++i)
@@ -267,6 +270,8 @@ private:
   const double me_;                  ///< electron mass
   const double me2_;                 ///< electron squared mass;
   std::array<double, 10> m_x_;       ///< mapped variables
+
+  grape::Process process_;
 };
 // register process
 REGISTER_PROCESS("grape", GrapeProcess);
