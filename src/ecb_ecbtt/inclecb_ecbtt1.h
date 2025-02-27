@@ -29,8 +29,6 @@
       parameter (lecb_ecbttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (necb_ecbttgrpsq = necb_ecbttgraph*necb_ecbttgraph)
       common /aecb_ecbttmslct/jselg(necb_ecbttgraph),jgraph,jgluon,

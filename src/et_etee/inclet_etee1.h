@@ -29,8 +29,6 @@
       parameter (let_eteeag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (net_eteegrpsq = net_eteegraph*net_eteegraph)
       common /aet_eteemslct/jselg(net_eteegraph),jgraph,jgluon,jhiggs

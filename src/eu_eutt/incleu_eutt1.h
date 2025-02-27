@@ -29,8 +29,6 @@
       parameter (leu_euttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (neu_euttgrpsq = neu_euttgraph*neu_euttgraph)
       common /aeu_euttmslct/jselg(neu_euttgraph),jgraph,jgluon,jhiggs

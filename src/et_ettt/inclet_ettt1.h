@@ -29,8 +29,6 @@
       parameter (let_etttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (net_etttgrpsq = net_etttgraph*net_etttgraph)
       common /aet_etttmslct/jselg(net_etttgraph),jgraph,jgluon,jhiggs

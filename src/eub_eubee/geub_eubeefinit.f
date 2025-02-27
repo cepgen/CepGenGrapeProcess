@@ -24,8 +24,6 @@
       kmngr  = neub_eubeegraph
       kmnext = neub_eubeeextn
       kmlag  = leub_eubeeag
-      smpref = 'eub_eubee'
-c??   smproc = 'u-bar positron  --> u-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = netb_etbttgraph
       kmnext = netb_etbttextn
       kmlag  = letb_etbttag
-      smpref = 'etb_etbtt'
-c??   smproc = 't-bar positron  --> t-bar positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

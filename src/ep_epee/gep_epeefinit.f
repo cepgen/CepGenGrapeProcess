@@ -24,8 +24,6 @@
       kmngr  = nep_epeegraph
       kmnext = nep_epeeextn
       kmlag  = lep_epeeag
-      smpref = 'ep_epee'
-c??   smproc = 'p positron  --> p positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

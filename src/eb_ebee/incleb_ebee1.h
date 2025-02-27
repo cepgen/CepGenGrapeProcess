@@ -29,8 +29,6 @@
       parameter (leb_ebeeag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (neb_ebeegrpsq = neb_ebeegraph*neb_ebeegraph)
       common /aeb_ebeemslct/jselg(neb_ebeegraph),jgraph,jgluon,jhiggs

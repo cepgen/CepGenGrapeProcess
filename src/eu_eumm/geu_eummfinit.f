@@ -24,8 +24,6 @@
       kmngr  = neu_eummgraph
       kmnext = neu_eummextn
       kmlag  = leu_eummag
-      smpref = 'eu_eumm'
-c??   smproc = 'u positron  --> u positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -29,8 +29,6 @@
       parameter (lebb_ebbeeag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nebb_ebbeegrpsq = nebb_ebbeegraph*nebb_ebbeegraph)
       common /aebb_ebbeemslct/jselg(nebb_ebbeegraph),jgraph,jgluon,

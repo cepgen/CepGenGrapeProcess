@@ -24,8 +24,6 @@
       kmngr  = necb_ecbeegraph
       kmnext = necb_ecbeeextn
       kmlag  = lecb_ecbeeag
-      smpref = 'ecb_ecbee'
-c??   smproc = 'c-bar positron  --> c-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

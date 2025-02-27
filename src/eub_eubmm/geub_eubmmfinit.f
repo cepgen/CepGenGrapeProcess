@@ -24,8 +24,6 @@
       kmngr  = neub_eubmmgraph
       kmnext = neub_eubmmextn
       kmlag  = leub_eubmmag
-      smpref = 'eub_eubmm'
-c??   smproc = 'u-bar positron  --> u-bar positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = nesb_esbeegraph
       kmnext = nesb_esbeeextn
       kmlag  = lesb_esbeeag
-      smpref = 'esb_esbee'
-c??   smproc = 's-bar positron  --> s-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

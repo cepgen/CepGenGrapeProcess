@@ -24,8 +24,6 @@
       kmngr  = ned_edmmgraph
       kmnext = ned_edmmextn
       kmlag  = led_edmmag
-      smpref = 'ed_edmm'
-c??   smproc = 'd positron  --> d positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

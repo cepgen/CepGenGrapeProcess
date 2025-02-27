@@ -24,8 +24,6 @@
       kmngr  = neu_euttgraph
       kmnext = neu_euttextn
       kmlag  = leu_euttag
-      smpref = 'eu_eutt'
-c??   smproc = 'u positron  --> u positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

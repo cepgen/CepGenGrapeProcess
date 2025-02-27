@@ -29,8 +29,6 @@
       parameter (led_edmmag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (ned_edmmgrpsq = ned_edmmgraph*ned_edmmgraph)
       common /aed_edmmmslct/jselg(ned_edmmgraph),jgraph,jgluon,jhiggs

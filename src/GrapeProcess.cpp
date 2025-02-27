@@ -61,7 +61,8 @@ public:
     {
       std::string logging;
       auto sc = utils::StreamCollector(logging);
-      prmass_();
+      if (debug_)
+        prmass_();
       CG_DEBUG("GrapeProcess") << "From prmass: " << logging;
     }
 
@@ -123,14 +124,14 @@ public:
     if (debug_)
       write_cards_();  // dump the steering card-type information into the output stream
   }
-  double computeWeight() override { return func_(m_x_.data()); }
+  double computeWeight() override { return process_.run(m_x_.data()); }
   void fillKinematics() override {
     pA() = Momentum(sp4vec_.vec[1].data());
     pB() = Momentum(sp4vec_.vec[0].data());
     pX() = Momentum(sp4vec_.vec[3].data());
     pY() = Momentum(sp4vec_.vec[2].data());
-    pc(0) = Momentum(sp4vec_.vec[4].data());
-    pc(1) = Momentum(sp4vec_.vec[5].data());
+    pc(0) = Momentum(sp4vec_.vec[5].data());
+    pc(1) = Momentum(sp4vec_.vec[4].data());
   }
 
   static ParametersDescription description() {
@@ -254,11 +255,6 @@ private:
 
     cmn_isrpol_.isrpol = static_cast<grape::LeptonISRMode>(gep_proc_.isr_flag) == grape::LeptonISRMode::sfMethod;
     k2nit_();
-    {
-      int jump = 0;  //FIXME
-      double mp2 = mp2_, me2 = me2_;
-      kinem1_.fact = constants::GEVM2_TO_PB * flux_factor_(kinem1_.s[0], mp2, me2, jump);
-    }
     gep_beam_.lpol_ebeam = electron_pol_ != 0.;
     gep_beam_.ipol_ebeam = gep_beam_.lpol_ebeam && electron_pol_polar_ != 0.;
   }

@@ -24,8 +24,6 @@
       kmngr  = nedb_edbeegraph
       kmnext = nedb_edbeeextn
       kmlag  = ledb_edbeeag
-      smpref = 'edb_edbee'
-c??   smproc = 'd-bar positron  --> d-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -29,8 +29,6 @@
       parameter (ledb_edbttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nedb_edbttgrpsq = nedb_edbttgraph*nedb_edbttgraph)
       common /aedb_edbttmslct/jselg(nedb_edbttgraph),jgraph,jgluon,

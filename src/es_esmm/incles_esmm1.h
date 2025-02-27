@@ -29,8 +29,6 @@
       parameter (les_esmmag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nes_esmmgrpsq = nes_esmmgraph*nes_esmmgraph)
       common /aes_esmmmslct/jselg(nes_esmmgraph),jgraph,jgluon,jhiggs

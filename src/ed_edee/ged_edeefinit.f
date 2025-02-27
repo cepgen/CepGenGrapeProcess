@@ -24,8 +24,6 @@
       kmngr  = ned_edeegraph
       kmnext = ned_edeeextn
       kmlag  = led_edeeag
-      smpref = 'ed_edee'
-c??   smproc = 'd positron  --> d positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = ned_edttgraph
       kmnext = ned_edttextn
       kmlag  = led_edttag
-      smpref = 'ed_edtt'
-c??   smproc = 'd positron  --> d positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = nes_esmmgraph
       kmnext = nes_esmmextn
       kmlag  = les_esmmag
-      smpref = 'es_esmm'
-c??   smproc = 's positron  --> s positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

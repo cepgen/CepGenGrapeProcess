@@ -24,8 +24,6 @@
       kmngr  = nec_eceegraph
       kmnext = nec_eceeextn
       kmlag  = lec_eceeag
-      smpref = 'ec_ecee'
-c??   smproc = 'c positron  --> c positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

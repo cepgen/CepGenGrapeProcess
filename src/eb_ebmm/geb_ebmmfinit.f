@@ -24,8 +24,6 @@
       kmngr  = neb_ebmmgraph
       kmnext = neb_ebmmextn
       kmlag  = leb_ebmmag
-      smpref = 'eb_ebmm'
-c??   smproc = 'b positron  --> b positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

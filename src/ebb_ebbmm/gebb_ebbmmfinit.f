@@ -24,8 +24,6 @@
       kmngr  = nebb_ebbmmgraph
       kmnext = nebb_ebbmmextn
       kmlag  = lebb_ebbmmag
-      smpref = 'ebb_ebbmm'
-c??   smproc = 'b-bar positron  --> b-bar positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -29,8 +29,6 @@
       parameter (leb_ebttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (neb_ebttgrpsq = neb_ebttgraph*neb_ebttgraph)
       common /aeb_ebttmslct/jselg(neb_ebttgraph),jgraph,jgluon,jhiggs

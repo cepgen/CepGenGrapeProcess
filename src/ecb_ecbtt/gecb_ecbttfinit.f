@@ -24,8 +24,6 @@
       kmngr  = necb_ecbttgraph
       kmnext = necb_ecbttextn
       kmlag  = lecb_ecbttag
-      smpref = 'ecb_ecbtt'
-c??   smproc = 'c-bar positron  --> c-bar positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

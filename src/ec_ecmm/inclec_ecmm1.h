@@ -29,8 +29,6 @@
       parameter (lec_ecmmag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nec_ecmmgrpsq = nec_ecmmgraph*nec_ecmmgraph)
       common /aec_ecmmmslct/jselg(nec_ecmmgraph),jgraph,jgluon,jhiggs

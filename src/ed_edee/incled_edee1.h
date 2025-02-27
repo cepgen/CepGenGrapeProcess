@@ -29,8 +29,6 @@
       parameter (led_edeeag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (ned_edeegrpsq = ned_edeegraph*ned_edeegraph)
       common /aed_edeemslct/jselg(ned_edeegraph),jgraph,jgluon,jhiggs

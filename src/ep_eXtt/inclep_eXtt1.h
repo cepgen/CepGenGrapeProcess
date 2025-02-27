@@ -26,8 +26,6 @@
       parameter (lep_eXttag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nep_eXttgrpsq = nep_eXttgraph*nep_eXttgraph)
       common /aep_eXttmslct/jselg(nep_eXttgraph),jgraph,jgluon,jhiggs

@@ -24,8 +24,6 @@
       kmngr  = neb_ebttgraph
       kmnext = neb_ebttextn
       kmlag  = leb_ebttag
-      smpref = 'eb_ebtt'
-c??   smproc = 'b positron  --> b positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

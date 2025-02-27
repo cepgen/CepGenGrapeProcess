@@ -24,8 +24,6 @@
       kmngr  = nebb_ebbeegraph
       kmnext = nebb_ebbeeextn
       kmlag  = lebb_ebbeeag
-      smpref = 'ebb_ebbee'
-c??   smproc = 'b-bar positron  --> b-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

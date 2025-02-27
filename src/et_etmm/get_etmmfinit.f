@@ -24,8 +24,6 @@
       kmngr  = net_etmmgraph
       kmnext = net_etmmextn
       kmlag  = let_etmmag
-      smpref = 'et_etmm'
-c??   smproc = 't positron  --> t positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = nedb_edbttgraph
       kmnext = nedb_edbttextn
       kmlag  = ledb_edbttag
-      smpref = 'edb_edbtt'
-c??   smproc = 'd-bar positron  --> d-bar positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

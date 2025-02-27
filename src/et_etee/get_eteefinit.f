@@ -24,8 +24,6 @@
       kmngr  = net_eteegraph
       kmnext = net_eteeextn
       kmlag  = let_eteeag
-      smpref = 'et_etee'
-c??   smproc = 't positron  --> t positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

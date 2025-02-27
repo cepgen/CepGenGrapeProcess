@@ -24,8 +24,6 @@
       kmngr  = nes_esttgraph
       kmnext = nes_esttextn
       kmlag  = les_esttag
-      smpref = 'es_estt'
-c??   smproc = 's positron  --> s positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

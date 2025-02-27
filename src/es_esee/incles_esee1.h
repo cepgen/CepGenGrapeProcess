@@ -29,8 +29,6 @@
       parameter (les_eseeag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nes_eseegrpsq = nes_eseegraph*nes_eseegraph)
       common /aes_eseemslct/jselg(nes_eseegraph),jgraph,jgluon,jhiggs

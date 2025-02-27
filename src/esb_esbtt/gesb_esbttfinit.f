@@ -24,8 +24,6 @@
       kmngr  = nesb_esbttgraph
       kmnext = nesb_esbttextn
       kmlag  = lesb_esbttag
-      smpref = 'esb_esbtt'
-c??   smproc = 's-bar positron  --> s-bar positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

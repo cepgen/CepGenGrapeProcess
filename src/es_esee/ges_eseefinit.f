@@ -24,8 +24,6 @@
       kmngr  = nes_eseegraph
       kmnext = nes_eseeextn
       kmlag  = les_eseeag
-      smpref = 'es_esee'
-c??   smproc = 's positron  --> s positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

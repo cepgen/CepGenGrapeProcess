@@ -24,8 +24,6 @@
       kmngr  = nec_ecttgraph
       kmnext = nec_ecttextn
       kmlag  = lec_ecttag
-      smpref = 'ec_ectt'
-c??   smproc = 'c positron  --> c positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

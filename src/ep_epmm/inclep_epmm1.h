@@ -26,8 +26,6 @@
       parameter (lep_epmmag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (nep_epmmgrpsq = nep_epmmgraph*nep_epmmgraph)
       common /aep_epmmmslct/jselg(nep_epmmgraph),jgraph,jgluon,jhiggs

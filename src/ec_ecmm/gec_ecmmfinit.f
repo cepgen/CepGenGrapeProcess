@@ -24,8 +24,6 @@
       kmngr  = nec_ecmmgraph
       kmnext = nec_ecmmextn
       kmlag  = lec_ecmmag
-      smpref = 'ec_ecmm'
-c??   smproc = 'c positron  --> c positron muon anti-muon '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

@@ -24,8 +24,6 @@
       kmngr  = netb_etbeegraph
       kmnext = netb_etbeeextn
       kmlag  = letb_etbeeag
-      smpref = 'etb_etbee'
-c??   smproc = 't-bar positron  --> t-bar positron electron positron '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

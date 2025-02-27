@@ -24,8 +24,6 @@
       kmngr  = nep_eXttgraph
       kmnext = nep_eXttextn
       kmlag  = lep_eXttag
-      smpref = 'ep_eXtt'
-c??   smproc = 'p positron  --> xxx positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

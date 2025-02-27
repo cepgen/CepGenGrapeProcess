@@ -24,8 +24,6 @@
       kmngr  = net_etttgraph
       kmnext = net_etttextn
       kmlag  = let_etttag
-      smpref = 'et_ettt'
-c??   smproc = 't positron  --> t positron tau anti-tau '
 
 *-----------------------------------------------------------------------
 * Gauge parametes (default is unitary gauge)

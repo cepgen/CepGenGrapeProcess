@@ -29,8 +29,6 @@
       parameter (letb_etbmmag    =64)
 
       common /amprck/kmngr,  kmnext, kmlag
-      common /amprcs/smpref, smproc
-      character*80   smpref, smproc
 
       parameter (netb_etbmmgrpsq = netb_etbmmgraph*netb_etbmmgraph)
       common /aetb_etbmmmslct/jselg(netb_etbmmgraph),jgraph,jgluon,
