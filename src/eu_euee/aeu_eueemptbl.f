@@ -10,7 +10,6 @@
       subroutine aeu_eueemptbl
       implicit real*8(a-h,o-z)
       include 'incleu_euee1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'incleu_eueep.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'incleu_euee1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

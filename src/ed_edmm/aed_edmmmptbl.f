@@ -10,7 +10,6 @@
       subroutine aed_edmmmptbl
       implicit real*8(a-h,o-z)
       include 'incled_edmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'incled_edmmp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'incled_edmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

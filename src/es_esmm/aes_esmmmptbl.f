@@ -10,7 +10,6 @@
       subroutine aes_esmmmptbl
       implicit real*8(a-h,o-z)
       include 'incles_esmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'incles_esmmp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'incles_esmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

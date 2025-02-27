@@ -10,7 +10,6 @@
       subroutine aep_epmmmptbl
       implicit real*8(a-h,o-z)
       include 'inclep_epmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'inclep_epmmp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'inclep_epmm1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

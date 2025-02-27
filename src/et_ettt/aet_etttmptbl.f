@@ -10,7 +10,6 @@
       subroutine aet_etttmptbl
       implicit real*8(a-h,o-z)
       include 'inclet_ettt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'inclet_etttp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'inclet_ettt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

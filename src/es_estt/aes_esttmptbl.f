@@ -10,7 +10,6 @@
       subroutine aes_esttmptbl
       implicit real*8(a-h,o-z)
       include 'incles_estt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'incles_esttp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'incles_estt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

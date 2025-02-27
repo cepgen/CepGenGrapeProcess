@@ -10,7 +10,6 @@
       subroutine aesb_esbeemptbl
       implicit real*8(a-h,o-z)
       include 'inclesb_esbee1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'inclesb_esbeep.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'inclesb_esbee1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

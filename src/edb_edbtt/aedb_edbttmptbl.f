@@ -10,7 +10,6 @@
       subroutine aedb_edbttmptbl
       implicit real*8(a-h,o-z)
       include 'incledb_edbtt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'incledb_edbttp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'incledb_edbtt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then

@@ -10,7 +10,6 @@
       subroutine aecb_ecbttmptbl
       implicit real*8(a-h,o-z)
       include 'inclecb_ecbtt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
       include 'inclecb_ecbttp.h'
 *-----------------------------------------------------------------------
@@ -45,7 +44,6 @@
       implicit real*8(a-h,o-z)
 
       include 'inclecb_ecbtt1.h'
-      include 'incl2.inc'
       include 'inclk.inc'
 *-----------------------------------------------------------------------
       if(jselg(1) .ne. 0) then
