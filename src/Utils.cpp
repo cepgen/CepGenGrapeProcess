@@ -47,6 +47,8 @@ namespace grape {
     }
   }
 
+  std::string processName(int jproc) { return "invalid process"s; }
+
   MiscBlockFiller::MiscBlockFiller(const ParametersList& params) : BlockFiller(params) {
     gep_misc_.icount = 0;
     gep_misc_.print_flag = steer<bool>("debug");
@@ -529,7 +531,7 @@ namespace grape {
   }
 
   std::unique_ptr<cepgen::utils::RandomGenerator> random_number_generator;
-  std::unique_ptr<cepgen::strfun::Parameterisation> structure_functions_brasse, structure_functions_allm97;
+  std::unique_ptr<cepgen::strfun::Parameterisation> structure_functions;
 }  // namespace grape
 
 extern "C" {
@@ -540,18 +542,12 @@ double cepgen_random_number_(void) {
 }
 
 void cepgen_hybrid_structure_functions_(double& q2, double& w, double& w1, double& w2) {
+  if (!grape::structure_functions)
+    grape::structure_functions = cepgen::StructureFunctionsFactory::get().build("grapeHybrid");
   static const auto mp2 = cepgen::PDG::get().mass(cepgen::PDG::proton);
   const auto xbj = cepgen::utils::xBj(q2, mp2, w * w);
-  if (w < 2.) {
-    if (!grape::structure_functions_brasse)
-      grape::structure_functions_brasse = cepgen::StructureFunctionsFactory::get().build("FioreBrasse");
-    w1 = grape::structure_functions_brasse->W1(xbj, q2);
-    w2 = grape::structure_functions_brasse->W2(xbj, q2);
-  }
-  if (!grape::structure_functions_allm97)
-    grape::structure_functions_allm97 = cepgen::StructureFunctionsFactory::get().build("ALLM97");
-  w1 = grape::structure_functions_allm97->W1(xbj, q2);
-  w2 = grape::structure_functions_allm97->W2(xbj, q2);
+  w1 = grape::structure_functions->W1(xbj, q2);
+  w2 = grape::structure_functions->W2(xbj, q2);
 }
 
 void taswap_(double& lhs, double& rhs) { std::swap(lhs, rhs); }

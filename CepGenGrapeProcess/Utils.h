@@ -24,6 +24,7 @@
 #include <CepGen/Utils/Limits.h>
 
 namespace grape {
+  std::string processName(int jproc);
   static constexpr double kMaxValue = 1.e20;
   int convertLeptonId(cepgen::pdgid_t pdgid);
   template <typename T>
