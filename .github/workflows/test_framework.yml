@@ -1,0 +1,42 @@
+name: Test the framework with a CepGen installation
+
+on:
+  push:
+  workflow_dispatch:
+env:
+  CEPGEN_PATH: /Package/install
+  LD_LIBRARY_PATH: /Package/install/lib64
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+    container:
+      image: 'laufor/ci-images:cepgen-fedora40'
+      options: -v ${{ github.workspace }}:/Grape
+    steps:
+    - uses: actions/checkout@v4
+    - name: 'Download CepGen artifact'
+      uses: dawidd6/action-download-artifact@v3
+      with:
+        workflow: build.yml
+        workflow_conclusion: success
+        name: install-env
+        repo: cepgen/cepgen
+    - name: 'CepGen uncompress'
+      run: |
+        tar xvfz install-environment.tar.gz -C /
+    - name: 'Configure the build'
+      run: |
+        git config --global --add safe.directory '*'
+        cmake -GNinja -B /Grape/build
+    - name: Build
+      run: cmake --build /Grape/build
+    - name: Test
+      working-directory: /Grape/build
+      run: |
+        ${{ env.CEPGEN_PATH }}/bin/cepgen -a libCepGenGrape.so -i cards/grape_ep_epee_cfg.py
+        ${{ env.CEPGEN_PATH }}/bin/cepgen -a libCepGenGrape.so -i cards/grape_ep_epmm_cfg.py
+        ${{ env.CEPGEN_PATH }}/bin/cepgen -a libCepGenGrape.so -i cards/grape_ep_eptt_cfg.py
