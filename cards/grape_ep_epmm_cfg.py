@@ -13,7 +13,7 @@ from Config.logger_cfi import logger
 process = cepgen.Module('grape',
     processParameters = cepgen.Parameters(
         mode = cepgen.ProcessMode.ElasticElastic,
-        LPAIR = PDG.electron,
+        LPAIR = PDG.muon,
         PROCESS = 2,  # quasi-elastic
         #PTMIN = [25.] * 4,
         #PTMIN = [15.] * 4,
@@ -38,7 +38,7 @@ generator = cepgen.Parameters(
 text = cepgen.Module('text',
     #variables = ['nev', 'm(4)', 'tgen'],
     histVariables={
-        'm(4)': cepgen.Parameters(xbins=[float(bin) for bin in range(0, 250, 10)]),
+        'm(4)': cepgen.Parameters(xbins=[float(bin) for bin in range(0, 250, 10)], log=True),
         'm(ob1)': cepgen.Parameters(xrange=(0., 250.), nbins=10, log=True),
         #'pt(7):pt(8)': cepgen.Parameters(xrange=(0., 250.), yrange=(0., 250.), log=True)
     }
